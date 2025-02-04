@@ -39,12 +39,14 @@ O código foi desenvolvido e testado na **Plataforma BitDogLab** versão 6.3, co
 ## 🛠️ Instalação
 
 ### 1️⃣ Clonar o repositório
+
 ```bash
 git clone https://github.com/CarlosValadao/LEDCountDown.git
 cd LEDCountDown
 ```
 
 ### 2️⃣ Instalar dependências
+
 Certifique-se de ter instalado:
 
 - 🛠️ **pico-sdk** (versão 2.1.0)
@@ -53,12 +55,14 @@ Certifique-se de ter instalado:
 - 🏗️ **Ninja** (opcional, mas recomendado)
 
 ### 3️⃣ Compilar o projeto
+
 ```bash
 mkdir build
 cd build
 cmake ..
 make
 ```
+
 Isso gerará o arquivo **.uf2** que pode ser carregado na **Raspberry Pi Pico**.
 
 ## ▶️ Executando o Programa
@@ -70,17 +74,12 @@ Isso gerará o arquivo **.uf2** que pode ser carregado na **Raspberry Pi Pico**.
 2. **Carregar o firmware**
    - Copie o arquivo **.uf2** gerado na pasta `build/` para a unidade que aparece no sistema (geralmente `RPI-RP2`).
 
-3. **Monitoramento Serial (Opcional)**
-   Você pode monitorar a saída serial usando `picocom`:
-   ```bash
-   picocom -b 115200 /dev/ttyUSB0
-   ```
-
 ## 🔬 Simulação com Wokwi
 
 Este projeto **pode ser simulado** no [Wokwi](https://wokwi.com/), pois contém os arquivos `diagram.json` e `wokwi.toml`.
 
-### 📌 Para rodar no Wokwi via **VS Code**:
+### 📌 Para rodar no Wokwi via **VS Code**
+
 1. Abra o projeto no **VS Code**.
 2. Clique no botão **Run Wokwi Simulation**.
 3. Visualize a simulação diretamente no editor.
