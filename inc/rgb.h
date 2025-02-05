@@ -32,7 +32,7 @@ typedef struct
     uint red;    /**< Pino do LED vermelho */
     uint green;  /**< Pino do LED verde */
     uint blue;   /**< Pino do LED azul */
-} rgbpins;
+} rgb_t;
 
 
 /**
@@ -40,7 +40,7 @@ typedef struct
  * 
  * @param pins Estrutura contendo os pinos dos LEDs RGB.
  */
-void rgb_init(const rgbpins *pins);
+void rgb_init(const rgb_t *pins);
 
 
 /**
@@ -49,7 +49,7 @@ void rgb_init(const rgbpins *pins);
  * @param pins Estrutura contendo os pinos dos LEDs RGB.
  * @param intensity Intensidade do LED vermelho, variando de 0 a 100.
  */
-void rgb_turn_on_red(const rgbpins *pins, uint8_t intensity);
+void rgb_turn_on_red(const rgb_t *pins, uint8_t intensity);
 
 
 /**
@@ -57,7 +57,7 @@ void rgb_turn_on_red(const rgbpins *pins, uint8_t intensity);
  * 
  * @param pins Estrutura contendo os pinos dos LEDs RGB.
  */
-void rgb_turn_off_red(const rgbpins *pins);
+void rgb_turn_off_red(const rgb_t *pins);
 
 
 /**
@@ -66,7 +66,7 @@ void rgb_turn_off_red(const rgbpins *pins);
  * @param pins Estrutura contendo os pinos dos LEDs RGB.
  * @param intensity Intensidade do LED verde, variando de 0 a 100.
  */
-void rgb_turn_on_green(const rgbpins *pins, uint8_t intensity);
+void rgb_turn_on_green(const rgb_t *pins, uint8_t intensity);
 
 
 /**
@@ -74,7 +74,7 @@ void rgb_turn_on_green(const rgbpins *pins, uint8_t intensity);
  * 
  * @param pins Estrutura contendo os pinos dos LEDs RGB.
  */
-void rgb_turn_off_green(const rgbpins *pins);
+void rgb_turn_off_green(const rgb_t *pins);
 
 
 /**
@@ -83,7 +83,7 @@ void rgb_turn_off_green(const rgbpins *pins);
  * @param pins Estrutura contendo os pinos dos LEDs RGB.
  * @param intensity Intensidade do LED azul, variando de 0 a 100.
  */
-void rgb_turn_on_blue(const rgbpins *pins, uint8_t intensity);
+void rgb_turn_on_blue(const rgb_t *pins, uint8_t intensity);
 
 
 /**
@@ -91,7 +91,7 @@ void rgb_turn_on_blue(const rgbpins *pins, uint8_t intensity);
  * 
  * @param pins Estrutura contendo os pinos dos LEDs RGB.
  */
-void rgb_turn_off_blue(const rgbpins *pins);
+void rgb_turn_off_blue(const rgb_t *pins);
 
 
 /**
@@ -100,7 +100,7 @@ void rgb_turn_off_blue(const rgbpins *pins);
  * @param pins Estrutura contendo os pinos dos LEDs RGB.
  * @param intensity Intensidade do LED branco, variando de 0 a 100.
  */
-void rgb_turn_on_white(const rgbpins *pins, uint8_t intensity);
+void rgb_turn_on_white(const rgb_t *pins, uint8_t intensity);
 
 
 /**
@@ -108,6 +108,8 @@ void rgb_turn_on_white(const rgbpins *pins, uint8_t intensity);
  * 
  * @param pins Estrutura contendo os pinos dos LEDs RGB.
  */
-void rgb_turn_off_white(const rgbpins *pins);
+void rgb_turn_off_white(const rgb_t *pins);
+
+void turn_off_led_by_gpio(uint8_t pin);
 
 #endif // RGB_H

@@ -31,7 +31,7 @@ static uint16_t calculate_led_intensity_value(uint8_t intensity)
  * 
  * @param pins Ponteiro para a estrutura contendo os pinos GPIO dos LEDs.
  */
-void rgb_init(const rgbpins *pins)
+void rgb_init(const rgb_t *pins)
 {
     uint slice_r, slice_g, slice_b;
     
@@ -66,7 +66,7 @@ void rgb_init(const rgbpins *pins)
  * @param pins Ponteiro para a estrutura contendo os pinos GPIO dos LEDs.
  * @param intensity Intensidade do LED vermelho, variando de 0 a 100.
  */
-void rgb_turn_on_red(const rgbpins *pins, uint8_t intensity)
+void rgb_turn_on_red(const rgb_t *pins, uint8_t intensity)
 {
     uint16_t led_intensity = calculate_led_intensity_value(intensity); // Calcula a intensidade do LED
     pwm_set_gpio_level(pins->red, led_intensity); // Acende o LED vermelho com a intensidade calculada
@@ -79,7 +79,7 @@ void rgb_turn_on_red(const rgbpins *pins, uint8_t intensity)
  * 
  * @param pins Ponteiro para a estrutura contendo os pinos GPIO dos LEDs.
  */
-void rgb_turn_off_red(const rgbpins *pins)
+void rgb_turn_off_red(const rgb_t *pins)
 {
     pwm_set_gpio_level(pins->red, 0); // Desliga o LED vermelho
 }
@@ -93,7 +93,7 @@ void rgb_turn_off_red(const rgbpins *pins)
  * @param pins Ponteiro para a estrutura contendo os pinos GPIO dos LEDs.
  * @param intensity Intensidade do LED verde, variando de 0 a 100.
  */
-void rgb_turn_on_green(const rgbpins *pins, uint8_t intensity)
+void rgb_turn_on_green(const rgb_t *pins, uint8_t intensity)
 {
     uint16_t led_intensity = calculate_led_intensity_value(intensity); // Calcula a intensidade do LED
     pwm_set_gpio_level(pins->green, led_intensity); // Acende o LED verde com a intensidade calculada
@@ -106,7 +106,7 @@ void rgb_turn_on_green(const rgbpins *pins, uint8_t intensity)
  * 
  * @param pins Ponteiro para a estrutura contendo os pinos GPIO dos LEDs.
  */
-void rgb_turn_off_green(const rgbpins *pins)
+void rgb_turn_off_green(const rgb_t *pins)
 {
     pwm_set_gpio_level(pins->green, 0); // Desliga o LED verde
 }
@@ -120,7 +120,7 @@ void rgb_turn_off_green(const rgbpins *pins)
  * @param pins Ponteiro para a estrutura contendo os pinos GPIO dos LEDs.
  * @param intensity Intensidade do LED azul, variando de 0 a 100.
  */
-void rgb_turn_on_blue(const rgbpins *pins, uint8_t intensity)
+void rgb_turn_on_blue(const rgb_t *pins, uint8_t intensity)
 {
     uint16_t led_intensity = calculate_led_intensity_value(intensity); // Calcula a intensidade do LED
     gpio_put(pins->blue, 1); // Acende o LED azul
@@ -133,7 +133,7 @@ void rgb_turn_on_blue(const rgbpins *pins, uint8_t intensity)
  * 
  * @param pins Ponteiro para a estrutura contendo os pinos GPIO dos LEDs.
  */
-void rgb_turn_off_blue(const rgbpins *pins)
+void rgb_turn_off_blue(const rgb_t *pins)
 {
     pwm_set_gpio_level(pins->blue, 0); // Desliga o LED azul
 }
@@ -147,7 +147,7 @@ void rgb_turn_off_blue(const rgbpins *pins)
  * @param pins Ponteiro para a estrutura contendo os pinos GPIO dos LEDs.
  * @param intensity Intensidade do LED branco, variando de 0 a 100.
  */
-void rgb_turn_on_white(const rgbpins *pins, uint8_t intensity) {
+void rgb_turn_on_white(const rgb_t *pins, uint8_t intensity) {
     uint16_t led_intensity = calculate_led_intensity_value(intensity / 3u); // Calcula a intensidade para branco
     pwm_set_gpio_level(pins->red, led_intensity);   // Acende o LED vermelho para o branco
     pwm_set_gpio_level(pins->green, led_intensity); // Acende o LED verde para o branco
@@ -161,8 +161,13 @@ void rgb_turn_on_white(const rgbpins *pins, uint8_t intensity) {
  * 
  * @param pins Ponteiro para a estrutura contendo os pinos GPIO dos LEDs.
  */
-void rgb_turn_off_white(const rgbpins *pins) {
+void rgb_turn_off_white(const rgb_t *pins) {
     pwm_set_gpio_level(pins->red, 0);   // Desliga o LED vermelho
     pwm_set_gpio_level(pins->green, 0); // Desliga o LED verde
     pwm_set_gpio_level(pins->blue, 0);  // Desliga o LED azul
+}
+
+void turn_off_led_by_gpio(uint8_t pin)
+{
+    pwm_set_gpio_level(pin, 0);
 }

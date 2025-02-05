@@ -13,7 +13,7 @@
 // Macros para configuração dos botões com resistores pull-up
 #define pb_config_btn_a() pb_config(BUTTON_A_PIN, true)  /**< Configura o botão A com pull-up */
 #define pb_config_btn_b() pb_config(BUTTON_B_PIN, true)  /**< Configura o botão B com pull-up */
-#define is_button_a_pressed() is_button_pressed(BUTTON_A)
+#define pb_is_button_a_pressed() pb_is_button_pressed(BUTTON_A)
 
 /**
  * @file push_button.c
@@ -63,8 +63,8 @@ void pb_set_irq_callback(gpio_irq_callback_t callback);
  */
 void pb_enable_irq(uint button_pin);
 
-bool is_button_pressed(uint8_t button_pin);
+bool pb_is_button_pressed(uint8_t button_pin);
 
-void pb_debounce(uint8_t button_pin);
+bool pb_is_debounce_delay_over();
 
 #endif //PUSH_BUTTON_H

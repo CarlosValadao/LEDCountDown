@@ -19,12 +19,16 @@ void pb_enable_irq(uint button_pin)
     else gpio_set_irq_enabled(button_pin, GPIO_IRQ_EDGE_FALL, true);    
 }
 
-bool is_button_pressed(uint8_t button_pin)
-{
-    return true; // TO DO
-}
+bool pb_is_button_pressed(uint8_t button_pin) { return (!gpio_get(button_pin)); }
 
-void pb_debounce(uint8_t button_pin)
+bool pb_is_debounce_delay_over()
 {
-    return; // TO DO
+    uint32_t current_time = to_ms_since_boot(get_absolute_time());
+    bool debounce_time_elapsed = (current_time - PB_DEBOUNCE_LAST_TIME >= 200);
+    if(debounce_time_elapsed)
+    {
+        PB_DEBOUNCE_LAST_TIME = current_time;
+        return true;
+    }
+    return false;
 }
